@@ -12,7 +12,9 @@ registry = CollectorRegistry()
 
 app = FastAPI(debug=False)
 app.add_middleware(CORSMiddleware,
-                   allow_origins=["*"])
+                   allow_origins=["*"],
+                   allow_methods=["*"],
+                   allow_headers=["*"])
 router = APIRouter()
 
 metrics: dict[str, Union[dict, Gauge]] = {"gpu_temperature": Gauge(
